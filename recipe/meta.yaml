@@ -27,6 +27,8 @@ requirements:
 test:
   commands:
     - configurable-http-proxy -h
+    - test -f $PREFIX/bin/configurable-http-proxy  # [not win]
+    - if not exist %PREFIX%\\configurable-http-proxy exit 1    # [win]
 
 about:
   home: https://github.com/jupyterhub/configurable-http-proxy
