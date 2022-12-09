@@ -1,36 +1,35 @@
 {% set name = "configurable-http-proxy" %}
-{% set version = "4.0.1" %}
-{% set node_version = os.environ.get('NODEJS_VERSION') or '14.*' %}
-{% set node_major = node_version.split('.')[0] %}
-{% set build = 0 %}
+{% set version = "4.5.4" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://registry.npmjs.org/{{ name }}/-/{{ name }}-{{ version }}.tgz
-  sha256: 20394d53dddb89f8f9459ce3536dd1c5fc9780c4faa7bb3fa2518d1805ddc1bb
+  sha256: 44f82252a3c978661ef16aab3fd606e10a06b3ca6c6d320e7aebec5a01c32d13
 
 build:
-  number: {{ build }}
-  string: "node{{node_major}}_{{ build}}"
-  script: npm pack; npm install -g {{name}}-{{version}}.tgz  # [not win]
+  number: 0
 
 requirements:
   build:
-    - nodejs {{node_version}}
+    - nodejs
+  host:
+    - nodejs
+    - yarn
   run:
-    - nodejs {{node_version}}
+    - nodejs
 
 test:
   commands:
     - configurable-http-proxy -h
+    - test -f $PREFIX/bin/configurable-http-proxy  # [not win]
+    - if not exist %PREFIX%\\configurable-http-proxy exit 1    # [win]
 
 about:
   home: https://github.com/jupyterhub/configurable-http-proxy
-  license: BSD 3-Clause
+  license: BSD-3-Clause
   license_file: LICENSE
   summary: node-http-proxy plus a REST API
 
