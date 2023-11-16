@@ -11,13 +11,14 @@ source:
 
 build:
   number: 0
+  skip: true # [s390x]
 
 requirements:
   build:
-    - nodejs
+    - nodejs 18.*
   host:
-    - nodejs
-    - yarn <2
+    - nodejs 18.*
+    - yarn 1.22.19
   run:
     - nodejs
 
@@ -31,7 +32,17 @@ about:
   home: https://github.com/jupyterhub/configurable-http-proxy
   license: BSD-3-Clause
   license_file: LICENSE
+  license_family: BSD
   summary: node-http-proxy plus a REST API
+  description: |
+    configurable-http-proxy (CHP) provides you with a way to update and manage a proxy table 
+    using a command line interface or REST API. It is a simple wrapper around node-http-proxy. 
+    node-http-proxy is an HTTP programmable proxying library that supports websockets and is 
+    suitable for implementing components such as reverse proxies and load balancers. 
+    By wrapping node-http-proxy, configurable-http-proxy extends this functionality to 
+    JupyterHub deployments.
+  dev_url: https://github.com/jupyterhub/configurable-http-proxy
+  doc_url: https://github.com/jupyterhub/configurable-http-proxy
 
 extra:
   recipe-maintainers:
