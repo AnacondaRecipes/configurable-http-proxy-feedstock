@@ -1,27 +1,29 @@
 {% set name = "configurable-http-proxy" %}
-{% set version = "4.6.0" %}
+{% set version = "5.1.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://registry.npmjs.org/{{ name }}/-/{{ name }}-{{ version }}.tgz
-  sha256: 84d9cd8551e6a3204808ff5146491eaab4705f599e5630ee1618b53a3650a0cd
+  url: https://github.com/jupyterhub/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 2a8bda5a8fd42e4433e5be87de5ef539c96d1c75b5007bb7d7ceba14ba374b27
 
 build:
   number: 0
-  skip: true # [s390x]
 
 requirements:
   build:
-    - nodejs 18.*
+    - nodejs 24.*
   host:
-    - nodejs 18.*
-    - yarn 1.22.19
+    - nodejs 24.*
+    - yarn 1.22.22
   run:
-    - nodejs
+    # Prerequisite: Node.js ≥ 18 -> https://github.com/jupyterhub/configurable-http-proxy/blob/5.1.0/README.md#install
+    # Used the latest available runtime version:
+    - nodejs 24.*
 
+# Unable to run tests, needs pipx(not in the main channel) to install internal SSL -> https://github.com/jupyterhub/configurable-http-proxy/blob/main/.github/workflows/test.yml#L84
 test:
   commands:
     - configurable-http-proxy -h
@@ -42,7 +44,7 @@ about:
     By wrapping node-http-proxy, configurable-http-proxy extends this functionality to 
     JupyterHub deployments.
   dev_url: https://github.com/jupyterhub/configurable-http-proxy
-  doc_url: https://github.com/jupyterhub/configurable-http-proxy
+  doc_url: https://github.com/jupyterhub/configurable-http-proxy/tree/main/doc
 
 extra:
   recipe-maintainers:
