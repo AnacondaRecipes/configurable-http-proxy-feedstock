@@ -44,7 +44,7 @@ about:
     By wrapping node-http-proxy, configurable-http-proxy extends this functionality to 
     JupyterHub deployments.
   dev_url: https://github.com/jupyterhub/configurable-http-proxy
-  doc_url: https://github.com/jupyterhub/configurable-http-proxy/tree/main/doc
+  doc_url: https://github.com/jupyterhub/configurable-http-proxy/tree/main/README.md
 
 extra:
   recipe-maintainers:
