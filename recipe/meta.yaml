@@ -20,7 +20,7 @@ requirements:
     - yarn 4
   run:
     # Prerequisite: Node.js ≥ 18 -> https://github.com/jupyterhub/configurable-http-proxy/blob/5.3.0/README.md#install
-    - nodejs >= 18
+    - nodejs >=18
 
 # Unable to run tests, needs pipx(not in the main channel) to install internal SSL -> https://github.com/jupyterhub/configurable-http-proxy/blob/main/.github/workflows/test.yml#L84
 test:
