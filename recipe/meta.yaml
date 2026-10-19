@@ -14,14 +14,16 @@ build:
 
 requirements:
   build:
-    - nodejs 24.*
+    - nodejs >=20
   host:
-    - nodejs 24.*
+    - nodejs >=20
     - yarn 1.22.22
   run:
     # Prerequisite: Node.js ≥ 18 -> https://github.com/jupyterhub/configurable-http-proxy/blob/5.1.0/README.md#install
-    # Used the latest available runtime version:
-    - nodejs 24.*
+    # win-arm64 only ships nodejs 20.20.2 and 26.5.1 (no 24.x), so the previous
+    # `nodejs 24.*` pin made the recipe unrenderable there. Allow the whole >=20
+    # range instead of pinning a single major.
+    - nodejs >=20
 
 # Unable to run tests, needs pipx(not in the main channel) to install internal SSL -> https://github.com/jupyterhub/configurable-http-proxy/blob/main/.github/workflows/test.yml#L84
 test:
