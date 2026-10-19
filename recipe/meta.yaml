@@ -14,14 +14,13 @@ build:
 
 requirements:
   build:
-    - nodejs 24.*
+    - nodejs 26
   host:
-    - nodejs 24.*
-    - yarn 1.22.22
+    - nodejs 26
+    - yarn 4
   run:
-    # Prerequisite: Node.js ≥ 20 -> https://github.com/jupyterhub/configurable-http-proxy/blob/5.3.0/README.md#install
-    # Used the latest available runtime version:
-    - nodejs 24.*
+    # Prerequisite: Node.js ≥ 18 -> https://github.com/jupyterhub/configurable-http-proxy/blob/5.3.0/README.md#install
+    - nodejs >= 18
 
 # Unable to run tests, needs pipx(not in the main channel) to install internal SSL -> https://github.com/jupyterhub/configurable-http-proxy/blob/main/.github/workflows/test.yml#L84
 test:
